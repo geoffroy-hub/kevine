@@ -1,0 +1,6 @@
+/* Polices locales de secours si Google Fonts non disponible hors ligne */
+@font-face {
+  font-family: 'FredokaOne-Fallback';
+  src: local('Trebuchet MS'), local('Arial Rounded MT Bold'), local('Arial');
+  font-display: swap;
+}

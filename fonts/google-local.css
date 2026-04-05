@@ -1,0 +1,64 @@
+/*
+ * Polices de substitution locales (hors ligne)
+ * Fredoka One → remplacée par une pile de polices arrondies natives
+ * Dancing Script → remplacée par des polices cursives natives
+ * Ces déclarations @font-face permettent aux noms 'Fredoka One' et 'Dancing Script'
+ * de continuer à fonctionner même sans connexion internet.
+ */
+
+/* Fredoka One — police arrondie/enfantine */
+@font-face {
+  font-family: 'Fredoka One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Fredoka One'),
+    local('FredokaOne-Regular'),
+    local('Nunito'),
+    local('Varela Round'),
+    local('Arial Rounded MT Bold'),
+    local('Trebuchet MS'),
+    local('Arial');
+}
+
+/* Dancing Script — police cursive */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Dancing Script'),
+    local('DancingScript-Regular'),
+    local('Segoe Script'),
+    local('Brush Script MT'),
+    local('Comic Sans MS'),
+    local('cursive');
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    local('Dancing Script Medium'),
+    local('Dancing Script'),
+    local('Segoe Script'),
+    local('Brush Script MT'),
+    local('Comic Sans MS');
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('Dancing Script Bold'),
+    local('Dancing Script'),
+    local('Segoe Script'),
+    local('Brush Script MT'),
+    local('Comic Sans MS');
+}

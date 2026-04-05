@@ -1,0 +1,30 @@
+/*
+ * fonts/css.css — Police "Russo One" (substitution locale)
+ * Les fichiers .woff2 originaux étant absents, on utilise des polices système.
+ */
+@font-face {
+  font-family: "Russo One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Russo One'),
+    local('RussoOne'),
+    local('Impact'),
+    local('Arial Black'),
+    local('Arial');
+}
+
+/* Police chinoise de secours */
+@font-face {
+  font-family: "HuaWen";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('STHupo'),
+    local('华文琥珀'),
+    local('Microsoft YaHei'),
+    local('SimHei'),
+    local('Arial');
+}
