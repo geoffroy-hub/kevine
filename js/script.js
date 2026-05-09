@@ -2007,7 +2007,7 @@ function showHeartGalleryEnd() {
 		"text-shadow:0 0 40px #ff1493,0 0 80px #ff69b4;" +
 		"animation:pulseGlowEnd 1.5s 0.5s ease-in-out infinite alternate;font-family:Georgia,serif;" +
 		"position:relative;z-index:1;";
-	subtitle.textContent = "LATIFA \uD83D\uDC97";
+	subtitle.textContent = "KEVINE \uD83D\uDC97";
 	overlay.appendChild(subtitle);
 
 	// ====== Grande photo de Kevine au centre ======
