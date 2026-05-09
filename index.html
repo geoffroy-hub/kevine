@@ -360,6 +360,8 @@
 			    white-space: pre-line; /* Tetap pertahankan ini untuk membaca \n dari JS */
 			    word-wrap: normal;
 			    word-break: keep-all;
+			    position: relative;
+			    z-index: 2;
 
 			    /* Biarkan efek text-shadow kamu yang lama di bawah sini */
 			    font-family: 'Fredoka One', cursive !important;
@@ -380,6 +382,103 @@
 			.intro-overlay.hide {
 				opacity: 0;
 				pointer-events: none;
+			}
+
+			/* ===== PHOTOS RECTANGLES VERTICAUX INTRO ===== */
+			/* ===== PHOTOS RECTANGLES VERTICAUX DÉCALÉS ===== */
+			.intro-photos {
+				position: absolute;
+				inset: 0;
+				display: flex;
+				align-items: flex-end;   /* ancrage bas pour le décalage vertical */
+				justify-content: center;
+				gap: 12px;
+				padding: 0 16px 10% 16px;
+				pointer-events: none;
+			}
+
+			/* Base commune */
+			.intro-photo-rect {
+				flex: 0 0 auto;
+				width: clamp(85px, 23vw, 185px);
+				border-radius: 16px;
+				overflow: hidden;
+				border: 3px solid rgba(255, 182, 193, 0.75);
+				box-shadow:
+					0 0 18px rgba(255, 105, 180, 0.55),
+					0 0 40px rgba(255, 20, 147, 0.25);
+				opacity: 0;
+				/* état initial pour l'animation */
+				transform: translateY(80px) scale(0.8);
+				transition: none;
+			}
+
+			/* Hauteurs DIFFÉRENTES pour chaque carte → décalage visuel fort */
+			.intro-photo-rect:nth-child(1) {
+				height: clamp(200px, 52vh, 380px);
+				margin-bottom: 60px; /* remonte la 1ère */
+			}
+			.intro-photo-rect:nth-child(2) {
+				height: clamp(260px, 68vh, 460px);
+				margin-bottom: 0;    /* la plus grande, référence basse */
+			}
+			.intro-photo-rect:nth-child(3) {
+				height: clamp(180px, 44vh, 320px);
+				margin-bottom: 40px; /* décalée intermédiaire */
+			}
+
+			.intro-photo-rect img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center top;
+				display: block;
+			}
+
+			/* Slide-in depuis le bas avec léger rebond */
+			@keyframes photoSlideIn1 {
+				0%   { opacity: 0; transform: translateY(90px) scale(0.78) rotate(-3deg); }
+				65%  { opacity: 1; transform: translateY(-10px) scale(1.04) rotate(0.5deg); }
+				100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+			}
+			@keyframes photoSlideIn2 {
+				0%   { opacity: 0; transform: translateY(110px) scale(0.78); }
+				65%  { opacity: 1; transform: translateY(-12px) scale(1.04); }
+				100% { opacity: 1; transform: translateY(0) scale(1); }
+			}
+			@keyframes photoSlideIn3 {
+				0%   { opacity: 0; transform: translateY(90px) scale(0.78) rotate(3deg); }
+				65%  { opacity: 1; transform: translateY(-10px) scale(1.04) rotate(-0.5deg); }
+				100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+			}
+
+			/* Glow pulsé */
+			@keyframes photoPulseGlow {
+				0%, 100% { box-shadow: 0 0 18px rgba(255,105,180,0.55), 0 0 40px rgba(255,20,147,0.25); }
+				50%       { box-shadow: 0 0 30px rgba(255,105,180,0.9), 0 0 65px rgba(255,20,147,0.5), 0 0 100px rgba(255,182,193,0.2); }
+			}
+
+			/* Chaque carte a son animation propre */
+			.intro-photo-rect:nth-child(1).visible {
+				animation: photoSlideIn1 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+				           photoPulseGlow 2s ease-in-out 0.7s infinite;
+			}
+			.intro-photo-rect:nth-child(2).visible {
+				animation: photoSlideIn2 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+				           photoPulseGlow 2s ease-in-out 0.7s infinite;
+			}
+			.intro-photo-rect:nth-child(3).visible {
+				animation: photoSlideIn3 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+				           photoPulseGlow 2s ease-in-out 0.7s infinite;
+			}
+
+			/* Mobile : toujours 3 photos mais plus compactes */
+			@media (max-width: 480px) {
+				.intro-photos { gap: 8px; padding-bottom: 8%; }
+				.intro-photo-rect { width: clamp(75px, 28vw, 130px); }
+				.intro-photo-rect:nth-child(1) { height: clamp(160px, 44vh, 280px); margin-bottom: 44px; }
+				.intro-photo-rect:nth-child(2) { height: clamp(200px, 56vh, 360px); }
+				.intro-photo-rect:nth-child(3) { height: clamp(140px, 38vh, 240px); margin-bottom: 30px; }
 			}
 
 			/* Nút Start */
@@ -928,6 +1027,18 @@
 		</div>
 
 		<div class="intro-overlay" id="introOverlay">
+			<!-- Galerie photos rectangles verticaux -->
+			<div class="intro-photos" id="introPhotos">
+				<div class="intro-photo-rect" id="introRect1">
+					<img src="images/b3.webp" alt="photo 1">
+				</div>
+				<div class="intro-photo-rect" id="introRect2">
+					<img src="images/b7.webp" alt="photo 2">
+				</div>
+				<div class="intro-photo-rect" id="introRect3">
+					<img src="images/b11.webp" alt="photo 3">
+				</div>
+			</div>
 			<div class="intro-text" id="introText">3</div>
 		</div>
 

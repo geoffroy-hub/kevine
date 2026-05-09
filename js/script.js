@@ -1601,6 +1601,16 @@ function startIntro() {
 	// Đảm bảo intro overlay hiển thị
 	introOverlay.classList.remove('hide');
 
+	// ===== ANIMATION PHOTOS RECTANGLES VERTICAUX =====
+	// Lancer les photos en décalé dès le début du countdown
+	const introRects = document.querySelectorAll('.intro-photo-rect');
+	introRects.forEach((rect, i) => {
+		setTimeout(() => {
+			rect.classList.add('visible');
+		}, i * 200); // décalage 0ms, 200ms, 400ms
+	});
+	// ================================================
+
 	// Hàm hiển thị số/chữ với animation
 	function showIntroText(text, isCountdown = true) {
 		// Reset animation và style
